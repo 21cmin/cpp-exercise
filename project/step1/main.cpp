@@ -40,6 +40,7 @@ int main(int argc, const char* argv[])
       Deposit();
       break;
     case WITHDRAW:
+      Withdraw();
       break;
     case PRINT:
       PrintAccount();
@@ -103,6 +104,22 @@ void Deposit()
 
 void Withdraw()
 {
+  int id, amount;
+  cout << "id: ";
+  cin >> id;
+  cout << "amount: ";
+  cin >> amount;
+  for (int i = 0; i < accountNum; i++)
+  {
+    if (customers[i].id == id)
+    {
+      customers[i].amount -= amount;
+      if (customers[i].amount < 0) customers[i].amount = 0;
+      return;
+    }
+
+    cout << "no match account" << endl;
+  }
 
 }
 
